@@ -1,0 +1,9 @@
+
+.subckt NOT node_a node_out vdd gnd
+
+	X1 node_a node_a node_out vdd gnd NAND
+
+.ends NOT
+
+
+

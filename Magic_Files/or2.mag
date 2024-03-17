@@ -1,0 +1,51 @@
+magic
+tech scmos
+timestamp 1699698287
+<< checkpaint >>
+rect -95 29 -29 115
+rect -17 28 49 114
+rect -38 -66 28 20
+<< metal1 >>
+rect -49 99 13 100
+rect -48 96 4 99
+rect -83 75 -72 79
+rect -77 67 -74 75
+rect -4 74 5 78
+rect -49 66 -40 70
+rect 0 66 4 74
+rect 30 67 38 70
+rect -66 41 -59 43
+rect -43 -24 -40 66
+rect 14 40 20 42
+rect 35 16 38 67
+rect -37 13 38 16
+rect -37 -16 -33 13
+rect -9 5 -2 8
+rect -9 2 -3 5
+rect -37 -20 -15 -16
+rect -43 -25 -14 -24
+rect -43 -28 -16 -25
+rect 10 -26 13 -22
+rect -7 -54 1 -52
+use nand2  nand2_2
+timestamp 1699617909
+transform 1 0 -17 0 1 -29
+box -7 -23 31 35
+use nand2  nand2_1
+timestamp 1699617909
+transform 1 0 4 0 1 65
+box -7 -23 31 35
+use nand2  nand2_0
+timestamp 1699617909
+transform 1 0 -74 0 1 66
+box -7 -23 31 35
+<< labels >>
+rlabel metal1 -19 100 -19 100 5 vdd
+rlabel metal1 -2 6 -2 6 1 vdd
+rlabel metal1 -59 42 -59 42 1 gnd
+rlabel metal1 20 41 20 41 1 gnd
+rlabel metal1 -7 -53 -7 -53 1 gnd
+rlabel metal1 -83 77 -83 77 3 A
+rlabel metal1 -4 76 -4 76 1 B
+rlabel metal1 13 -24 13 -24 1 out
+<< end >>

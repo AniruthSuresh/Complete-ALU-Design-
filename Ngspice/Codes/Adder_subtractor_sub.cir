@@ -1,0 +1,20 @@
+
+
+.subckt Adder_Subtractor a3 a2 a1 a0 b3 b2 b1 b0 cin s0 s1 s2 s3 c node_x gnd
+
+	X4 b3 cin r3 node_x gnd XOR
+	X3 b2 cin r2 node_x gnd XOR
+	X2 b1 cin r1 node_x gnd XOR
+	X1 b0 cin r0 node_x gnd XOR
+
+
+	X5 r0 a0 cin s0 c1 node_x gnd Full_adder
+	X6 r1 a1 c1 s1 c2 node_x gnd Full_adder
+	X7 r2 a2 c2 s2 c3 node_x gnd Full_adder
+	X8 r3 a3 c3 s3 c node_x gnd Full_adder
+
+.ends Adder_Subtractor
+
+
+
+

@@ -1,0 +1,136 @@
+* Include all the subcircuit files 
+.include TSMC_180nm.txt
+
+.include NAND.cir
+.include AND.cir 
+.include OR.cir 
+.include NOT.cir 
+.include XOR.cir
+.include XNOR.cir
+
+.include Full_adder_sub.cir
+
+.include Adder_subtractor_sub.cir
+.include And_4bit_sub.cir
+.include Comparator_sub.cir
+
+.include Decoder_sub.cir
+
+.include Enable_add_sub.cir
+*.include Enable_sub_sub.cir
+.include Enable_comp_sub.cir
+.include Enable_and_sub.cir
+
+
+
+.param SUPPLY =1.8
+*Supply is 1.8 
+.param LAMBDA = 0.18u
+
+.param wn1 = {10*LAMBDA}
+.param wn2 = {10*LAMBDA}
+.param ln1 = {2*LAMBDA}
+.param ln2 = {2*LAMBDA}
+
+.param wp1 = wn1
+.param wp2 = wn1
+.param lp1 = {LAMBDA}
+.param lp2 = {LAMBDA}
+
+.global gnd
+
+Vdd node_x gnd 'SUPPLY'
+
+
+* Va3 a3 0 DC 1V
+* Va2 a2 0 DC 1V
+* Va1 a1 0 DC 0V
+* Va0 a0 0 DC 1V
+* * even if the inputs are 1 , it will consider 1.8 because of supply ( MOSFETS ) ON AND OFF 
+
+* Vb3 b3 0 DC 0V
+* Vb2 b2 0 DC 1V
+* Vb1 b1 0 DC 0V
+* Vb0 b0 0 DC 1V
+
+* Vs0 s0 0 DC 0V
+* Vs1 s1 0 DC 0V
+
+* | min val | max val | delay | rise time | fall time | width of pulse | period of pulse 
+* Va3 a3 gnd PULSE(0 1.5 0ns 100ps 100ps 20ns 40ns)
+
+
+Va3 a3 gnd PULSE(0 1.8 400ns 100ps 100ps 400ns 800ns)
+Va2 a2 gnd PULSE(1.8 0 400ns 100ps 100ps 400ns 800ns)
+Va1 a1 gnd PULSE(0 1.8 400ns 100ps 100ps 400ns 800ns)
+Va0 a0 gnd PULSE(0 1.8 400ns 100ps 100ps 400ns 800ns)
+
+
+Vb3 b3 gnd PULSE(1.8 0 400ns 100ps 100ps 400ns 800ns)
+Vb2 b2 gnd PULSE(1.8 0 400ns 100ps 100ps 400ns 800ns)
+Vb1 b1 gnd PULSE(1.8 0 400ns 100ps 100ps 400ns 800ns)
+Vb0 b0 gnd PULSE(0 1.8 400ns 100ps 100ps 400ns 800ns)
+
+
+
+Vs0 s0 gnd PULSE(1.8 0 0ns 100ps 100ps 199ns 400ns)
+Vs1 s1 gnd PULSE(1.8 0 0ns 100ps 100ps 399ns 800ns)
+
+
+X1 s0 s1 d3 d2 d1 d0 node_x gnd Decoder
+
+X10 d0 d1 deff node_x gnd OR
+
+X2 a3 a2 a1 a0 b3 b2 b1 b0 deff a_f_3 a_f_2 a_f_1 a_f_0 b_f_3 b_f_2 b_f_1 b_f_0 node_x gnd Enable_Add
+
+*X3 a3 a2 a1 a0 b3 b2 b1 b0 d1 a1_f_3 a1_f_2 a1_f_1 a1_f_0 b1_f_3 b1_f_2 b1_f_1 b1_f_0 node_x gnd Enable_Sub
+
+X4 a3 a2 a1 a0 b3 b2 b1 b0 d2 a2_f_3 a2_f_2 a2_f_1 a2_f_0 b2_f_3 b2_f_2 b2_f_1 b2_f_0 node_x gnd Enable_Comp
+X5 a3 a2 a1 a0 b3 b2 b1 b0 d3 a3_f_3 a3_f_2 a3_f_1 a3_f_0 b3_f_3 b3_f_2 b3_f_1 b3_f_0 node_x gnd Enable_And
+
+
+X6 a_f_3 a_f_2 a_f_1 a_f_0 b_f_3 b_f_2 b_f_1 b_f_0 d1 s_a_0 s_a_1 s_a_2 s_a_3 c_a node_x gnd Adder_Subtractor
+*X7 a1_f_3 a1_f_2 a1_f_1 a1_f_0 b1_f_3 b1_f_2 b1_f_1 b1_f_0 d1 s_b_0 s_b_1 s_b_2 s_b_3 c_b node_x gnd Adder_Subtractor
+X8 a2_f_3 a2_f_2 a2_f_1 a2_f_0 b2_f_3 b2_f_2 b2_f_1 b2_f_0 y2 y1 y0 d2 node_x gnd Comparator
+X9 a3_f_3 a3_f_2 a3_f_1 a3_f_0 b3_f_3 b3_f_2 b3_f_1 b3_f_0 a4_3 a4_2 a4_1 a4_0 node_x gnd And4bit
+
+
+* The subcircuit is called using the PLACEHOLDER X ( it must start with X  i.e X1 Xa .. ) 
+* NAND is the subcircuit name 
+
+.tran 1n 800n
+
+
+.control
+run
+
+set color0 = rgb:f/f/e 
+*f/f/e represents a shade of yelllow in hexadecimal format 
+*Color0 is used for background usually 
+
+set color1 = black
+*color1 is used for active elements 
+
+*plot v(a2)
+*plot v(s3)+4 v(s2)+3 v(s1)+2 v(s0)+1 v(c)
+*plot v(s3)+4 v(s2)+3 v(s1)+2 v(s0)+1 v(c)
+*plot v(a2_f_3)+6 v(a2_f_2)+4 v(a2_f_1)+2 v(a2_f_0) 
+*plot v(b2_f_3)+6 v(b2_f_2)+4 v(b2_f_1)+2 v(b2_f_0) 
+* *plot v(d3)+4 v(d2)+3 v(d1)+2 v(d0)+1 
+* *plot v(d2)
+* plot v(deff)
+plot v(a3)+8 v(a2)+6 v(a1)+4 v(a0)+2
+plot v(b3)+8 v(b2)+6 v(b1)+4 v(b0)+2
+plot v(s0) v(s1)+4
+plot v(s_a_3)+8 v(s_a_2)+6 v(s_a_1)+4 v(s_a_0)+2 v(c_a)+10
+plot v(y2)+4 v(y1)+2 v(y0) 
+plot v(a4_3)+8 v(a4_2)+6 v(a4_1)+4 v(a4_0)+2 
+plot v(d0) v(d1)+2 v(d2)+4 v(d3)+6
+
+*plots in the same plot ( those + are to differentiate the inputs and outputs ) 
+
+.end
+.endc
+
+
+

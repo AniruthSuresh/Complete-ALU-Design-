@@ -1,0 +1,19 @@
+
+
+
+.subckt Enable_And a3 a2 a1 a0 b3 b2 b1 b0 d3 a_f_3 a_f_2 a_f_1 a_f_0 b_f_3 b_f_2 b_f_1 b_f_0 node_x gnd
+
+	
+	X1 d3 a0 a_f_0 node_x gnd AND
+	X2 d3 a1 a_f_1 node_x gnd AND
+	X3 d3 a2 a_f_2 node_x gnd AND
+	X4 d3 a3 a_f_3 node_x gnd AND
+
+	X5 d3 b0 b_f_0 node_x gnd AND
+	X6 d3 b1 b_f_1 node_x gnd AND
+	X7 d3 b2 b_f_2 node_x gnd AND
+	X8 d3 b3 b_f_3 node_x gnd AND
+
+
+.ends Enable_And
+

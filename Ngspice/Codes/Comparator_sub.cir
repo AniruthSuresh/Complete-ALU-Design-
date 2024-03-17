@@ -1,0 +1,68 @@
+.subckt Comparator a3 a2 a1 a0 b3 b2 b1 b0 y2 y1 y0 d2 node_x gnd
+
+
+	X8 a0 na0 node_x gnd NOT
+	X9 a1 na1 node_x gnd NOT
+	X10 a2 na2 node_x gnd NOT
+	X11 a3 na3 node_x gnd NOT
+
+	X12 b0 nb0 node_x gnd NOT
+	X13 b1 nb1 node_x gnd NOT
+	X14 b2 nb2 node_x gnd NOT
+	X15 b3 nb3 node_x gnd NOT
+
+	X16 na3 b3 w1 node_x gnd AND 
+	X17 nb3 a3 w2 node_x gnd AND 
+
+	X18 na2 b2 w3 node_x gnd AND 
+	X19 nb2 a2 w4 node_x gnd AND 
+
+	X20 na1 b1 w5 node_x gnd AND 
+	X21 nb1 a1 w6 node_x gnd AND 
+
+	X22 na0 b0 w7 node_x gnd AND 
+	X23 nb0 a0 w8 node_x gnd AND 
+
+	X24 a3 b3 x3 node_x gnd XNOR
+	X25 a2 b2 x2 node_x gnd XNOR
+	X26 a1 b1 x1 node_x gnd XNOR	
+	X27 a0 b0 x0 node_x gnd XNOR
+
+	X28 x3 w3 t1 node_x gnd AND
+
+	X29 x3 w4 t2 node_x gnd AND
+
+	X30 x3 x2 o1 node_x gnd AND
+	X31 o1 w5 t3 node_x gnd AND
+
+	X32 o1 w6 t4 node_x gnd AND
+
+	X33 o1 x1 o2 node_x gnd AND
+	X34 o2 w7 t5 node_x gnd AND
+
+	X35 o2 w8 t6 node_x gnd AND
+
+	*A < B
+
+	X36 w1 t1 l1 node_x gnd OR
+	X37 t3 t5 l2 node_x gnd OR
+	X38 l1 l2 y0 node_x gnd OR
+
+	*A > B
+
+	X39 w2 t2 g1 node_x gnd OR
+	X40 t4 t6 g2 node_x gnd OR
+	X41 g1 g2 y1 node_x gnd OR
+
+	*A = B
+
+	X42 y0 y0d node_x gnd NOT
+	X43 y1 y1d node_x gnd NOT
+	X44 y0d y1d e1 node_x gnd AND
+	
+	X45 e1 d2 y2 node_x gnd AND 
+
+
+.ends Comparator
+
+

@@ -1,0 +1,11 @@
+
+.subckt OR node_a node_b node_out vdd gnd
+
+	X1 node_a node_a node_c vdd gnd NAND
+	X2 node_b node_b node_d vdd gnd NAND
+	X3 node_c node_d node_out vdd gnd NAND
+
+.ends OR
+
+
+

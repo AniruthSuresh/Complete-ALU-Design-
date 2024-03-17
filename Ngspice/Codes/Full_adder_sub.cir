@@ -1,0 +1,13 @@
+
+.subckt Full_adder node_a node_b node_c node_sum node_carry vdd gnd
+
+	X1 node_a node_b node_d vdd gnd XOR
+	X2 node_a node_b node_e vdd gnd AND
+	X3 node_d node_c node_f vdd gnd AND
+	X4 node_d node_c node_sum vdd gnd XOR
+	X5 node_f node_e node_carry vdd gnd OR
+
+.ends Full_adder
+
+
+

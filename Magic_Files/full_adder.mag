@@ -1,0 +1,80 @@
+magic
+tech scmos
+timestamp 1699698287
+<< checkpaint >>
+rect -11 -111 111 -15
+rect 144 -111 266 -15
+rect 360 -143 509 40
+<< metal1 >>
+rect 41 75 45 78
+rect 228 67 232 69
+rect 268 68 272 70
+rect 268 67 276 68
+rect 77 60 79 64
+rect 278 32 280 36
+rect 73 27 75 31
+rect 396 24 401 26
+rect 275 14 279 16
+rect 71 10 74 13
+rect 72 9 74 10
+rect 355 1 378 4
+rect 355 0 375 1
+rect 23 -30 26 -29
+rect 178 -30 180 -29
+rect 4 -55 5 -51
+rect 4 -63 6 -59
+rect 86 -63 107 -60
+rect 158 -63 161 -59
+rect 239 -61 241 -59
+rect 54 -94 56 -92
+rect 104 -111 107 -63
+rect 191 -89 192 -87
+rect 355 -111 358 0
+rect 389 -34 393 -32
+rect 470 -35 472 -33
+rect 445 -71 449 -67
+rect 470 -101 475 -97
+rect 104 -114 358 -111
+rect 457 -129 460 -127
+<< metal2 >>
+rect 126 87 249 91
+rect 126 69 130 87
+rect 245 80 249 87
+rect 42 65 130 69
+rect 127 -51 130 65
+rect 316 38 441 41
+rect 127 -55 157 -51
+rect 316 -60 319 38
+rect 438 3 441 38
+rect 438 -1 453 3
+rect 245 -63 319 -60
+<< polycontact >>
+rect 280 32 284 36
+rect 75 27 79 31
+<< m2contact >>
+rect 245 76 249 80
+rect 38 65 42 69
+rect 157 -55 162 -51
+rect 241 -63 245 -59
+rect 453 -1 457 3
+use or2  or2_0
+timestamp 1699698287
+transform 1 0 457 0 1 -75
+box -83 -54 38 101
+use and2  and2_1
+timestamp 1699698287
+transform 1 0 210 0 1 -97
+box -52 0 42 68
+use and2  and2_0
+timestamp 1699698287
+transform 1 0 55 0 1 -97
+box -52 0 42 68
+use xor2  xor2_0
+timestamp 1699009606
+transform 1 0 -62 0 1 52
+box 62 -53 157 28
+use xor2  xor2_1
+timestamp 1699009606
+transform 1 0 143 0 1 56
+box 62 -53 157 28
+<< end >>

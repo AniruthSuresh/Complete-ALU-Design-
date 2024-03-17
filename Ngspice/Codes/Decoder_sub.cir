@@ -1,0 +1,13 @@
+
+.subckt Decoder node_s0 node_s1 d3 d2 d1 d0 node_x gnd
+
+	X1 node_s0 node_s0c node_x gnd NOT
+	X2 node_s1 node_s1c node_x gnd NOT 
+		
+	X3 node_s0c node_s1c d0 node_x gnd AND 
+	X4 node_s1c node_s0 d1 node_x gnd AND
+	X5 node_s0c node_s1 d2 node_x gnd AND
+	X6 node_s1 node_s0 d3 node_x gnd AND 
+
+.ends Decoder
+

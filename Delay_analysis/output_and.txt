@@ -1,0 +1,4 @@
+5.05668e-08 input = a0 output = a4_0
+5.07749e-08 input = a0 output = a4_1
+5.75417e-08 input = a0 output = a4_2
+5.73055e-08 input = a0 output = a4_3

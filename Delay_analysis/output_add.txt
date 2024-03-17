@@ -1,0 +1,4 @@
+3.03565e-08 input = a0 output = sum_0
+2.93258e-08 input = a0 output = sum_1
+2.81764e-08 input = a0 output = sum_2
+2.75260e-08 input = a0 output = sum_3
